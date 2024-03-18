@@ -1,0 +1,6 @@
+projectKey=Tesis-Back
+serverUrl=http://localhost:9000
+serverVersion=10.4.1.88267
+dashboardUrl=http://localhost:9000/dashboard?id=Tesis-Back
+ceTaskId=739bd48f-f9c0-4681-aa3c-9df977703dd5
+ceTaskUrl=http://localhost:9000/api/ce/task?id=739bd48f-f9c0-4681-aa3c-9df977703dd5

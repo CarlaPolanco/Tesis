@@ -47,7 +47,20 @@ function Pagetraslate() {
     const [LinkVideo, setLinkVideo] = useState("");
     const [IdVideo, setIdVideo] = useState("");
     const [lenguaje, setlenguaje] = useState("");
-    const [text, setText] = useState("");
+    const [cuadroTexto, setCuadroTexto] = useState("");
+
+    const handleChangeTexto = (texto) => {
+        setCuadroTexto(texto);
+    };
+
+    const handleDescargar = () => {
+        const element = document.createElement("a");
+        const file = new Blob([cuadroTexto], { type: 'text/plain' });
+        element.href = URL.createObjectURL(file);
+        element.download = "Texto.txt";
+        document.body.appendChild(element);
+        element.click();
+    };
 
     const fetchData = async () => {
 
@@ -85,11 +98,6 @@ function Pagetraslate() {
         setlenguaje(event.target.value);
         fetchData();
     };
-
-    const handleSubmitDes = () => {
-        setText("Adios");
-        console.log(text);
-    }
 
     return (
         <>
@@ -159,14 +167,16 @@ function Pagetraslate() {
                                 </TextField>
                             </Grid>
                         </Typography>
-                        <Acordeon LinkVideo={[LinkVideo, lenguaje]} />
+                        <Acordeon LinkVideo={[LinkVideo, lenguaje]} handleChangeTexto={handleChangeTexto} />
                     </Grid>
                 </Grid>
                 <Grid container sx={{ padding: 2 }}>
-                    <textarea name="InputText" rows={15} cols={800} />
+                    <textarea name="InputText" rows={15} cols={800} value={cuadroTexto} />
                 </Grid>
                 <Grid item sx={{ padding: 1 }}>
-                    <MKButton onClick={handleSubmitDes} variant="gradient" color="info" fullWidth sx={{ height: "100%" }}>
+                    <MKButton onClick={handleDescargar}
+                        variant="gradient" color="info"
+                        fullWidth sx={{ height: "100%" }} >
                         Descargar
                     </MKButton>
                 </Grid>

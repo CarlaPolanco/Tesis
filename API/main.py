@@ -80,11 +80,14 @@ def transcribir():
     return {"contenido": transcipcion,
             "longitud": len(transcipcion)}
 
-@app.get("/traducir/{texto}/{idioma}/{idioma_destino}")
-def traducir(texto,idioma,idioma_destino):
+@app.get("/traducir/{idioma}/{idioma_destino}")
+def traducir(idioma,idioma_destino):
 
     model = M2M100ForConditionalGeneration.from_pretrained("facebook/m2m100_1.2B").to(device)
     tokenizer = M2M100Tokenizer.from_pretrained("facebook/m2m100_1.2B")
+
+    with open("transcripcion.txt", "r") as file:
+        texto = file.read()
 
     print("Traduciendo...")
 
@@ -127,7 +130,9 @@ def traducir(texto,idioma,idioma_destino):
     with open("traduccion.txt", "w") as file:
         file.write(result_stringF)
 
-    return {"Traduccion": result_stringF,
+    print("Traduccion finalizada: ", result_stringF)
+    
+    return {"contenido": result_stringF,
             "longitud": len(result_stringF)}
 
 @app.get("/lectura")

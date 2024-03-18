@@ -40,8 +40,8 @@ function Counters() {
             <DefaultCounterCard
               count={4}
               title="Modelos de Inteligencia Artificial"
-              description="Para obtener nuestros resultados trabajamos con 4 modelos de Deep Learning,
-              enfocados en la traducción, transcripcion y resumenes de textos."
+              description="Para obtener nuestros resultados trabajamos con 4 modelos de Natural Processing Language (NLP),
+              enfocados en la traducción, transcripcion, lectura y resumenes de textos."
             />
           </Grid>
         </Grid>
