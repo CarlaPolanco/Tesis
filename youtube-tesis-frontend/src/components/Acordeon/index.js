@@ -83,7 +83,7 @@ export default function ControlledAccordions({ LinkVideo = LinkVideo, handleChan
         setExpanded(isExpanded ? panel : false);
     };
 
-    const openai = new OpenAI({ apiKey: "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", dangerouslyAllowBrowser: true });
+
 
     const BotonResumir = async () => {
         if (LinkVideo[0] === "" || LinkVideo[1] === "" || LinkVideo === undefined) {
